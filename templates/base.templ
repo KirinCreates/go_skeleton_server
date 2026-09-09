@@ -1,0 +1,46 @@
+package templates
+
+templ Base(title string, heading string, contents templ.Component) {
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/icons/favicon.png">
+        <link href="/static/css/output.css" rel="stylesheet">
+        <script type="text/javascript" src="/static/js/htmx_4_0_0.js"></script> <!-- uses htmx 4 -->
+        <script type="text/javascript" src="/static/js/hx-alpine-compat.js"></script> <!-- Make Apline work with HTMX 4 -->
+        <script type="text/javascript" defer src="/static/js/alpine_3_x_x.min.js"></script>
+        <title>{title}</title>
+    </head>
+
+    <body>
+        <div class="prose mx-auto my-5">
+            <h1>{heading}</h1>
+            <div id="content-wrapper">
+                @contents
+            </div>
+        </div>
+    </body>
+
+    </html>
+}
+
+templ ExampleContent(text string) {
+    <p> Click button to do something interesting:</p>
+    <button class="btn btn-primary" hx-get="/getTime" hx-target="#target-div" hx-swap="innerHTML">
+        {text}
+    </button>
+
+    <!-- HTMX will replace the div's innerHTML -->
+    <div id="target-div"> 
+
+    </div>
+}
+
+templ SimpleResponse(text string) {
+    <p>
+        {text}
+    </p>
+}
