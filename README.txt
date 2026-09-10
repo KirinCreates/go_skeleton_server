@@ -26,7 +26,7 @@ Before the server can be run, make sure all HTML templates are compiled and go-f
 
 Run the above command whenever you have changed and saved a .templ file
 
-IF you wan hot reload of code while developing run in project root:
+IF you want hot reload of code while developing run in project root:
 
     go tool air
     
